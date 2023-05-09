@@ -1,4 +1,4 @@
-const { Videogame, gender } = require('../db');
+const { Videogame, Genre } = require('../db');
 const axios = require('axios');
 const { API_KEY } = process.env;
 
@@ -47,8 +47,16 @@ const createVideogame = async (name, image, description, platforms, released, ra
     return newVideogame;
 };
 
+const getVideogameById = async (id, source) => {
 
-module.exports = { getAllVideogames, searchVideogameByName, createVideogame };
+};
+
+module.exports = {
+    getAllVideogames,
+    searchVideogameByName,
+    createVideogame,
+    getVideogameById
+};
 
 
 

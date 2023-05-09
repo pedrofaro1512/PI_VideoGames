@@ -7,6 +7,6 @@ const router = Router();
 
 // Path de las rutas
 router.use('/videogames', videogamesRouter);
-router.use('/genres', videogamesRouter);
+router.use('/genres', genresRouter);
 
 module.exports = router;

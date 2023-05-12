@@ -23,6 +23,7 @@ const cleanVideogame = (arr) => {
 // Controller para videogames de la BD o la API por name o no
 const searchVideogameByName = async (name) => {
     const dbVideogames = await Videogame.findAll({ where: { name:name }});
+
     const apiVideogames = (await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data.results;
     
     const apiVideogamesData = cleanVideogame(apiVideogames);
@@ -35,7 +36,14 @@ const searchVideogameByName = async (name) => {
 // Controller para traer todos los videogames de la BD o la API
 const getAllVideogames = async () => {
     const dbVideogames = await Videogame.findAll();
-    const apiVideogames = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data.results;
+
+    let apiurls = [];
+        for(let i = 1; i <= 5; i++) {
+            apiurls = [...apiurls, `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`]
+        };
+        let apiVideogames = apiurls.map((url)=> axios.get(url));
+        apiVideogames = await Promise.all(apiVideogames);
+        apiVideogames = apiVideogames?.map((response) => response.data.results).flat();
 
     const apiVideogamesData = cleanVideogame(apiVideogames);
 

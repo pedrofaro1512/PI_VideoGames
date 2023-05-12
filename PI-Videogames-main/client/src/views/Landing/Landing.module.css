@@ -1,0 +1,42 @@
+.landing {
+    /* background: url('./Kitchen.jpg') no-repeat center center fixed; */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.landing .btn {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 30px;
+    background-color: #e84c3d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out
+}
+.landing .btn:hover {
+    background-color: #c53d2d;
+    font-weight: bold;
+}
+.landing p {
+    border-radius: 5px;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: black;
+    font-size: 22px;
+}
+.landing h1 {
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+}

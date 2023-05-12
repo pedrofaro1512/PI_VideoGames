@@ -1,0 +1,13 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 15px;
+    border: 1px solid black;
+    height: 4rem;
+    align-items: center;
+}
+img{
+    width: 3rem;
+    margin-top: 1px;
+}

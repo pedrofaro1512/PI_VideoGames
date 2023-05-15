@@ -4,3 +4,7 @@
     height: fit-content;
     border-radius: 10px;
 }
+.card img {
+    width: 350px;
+    
+}

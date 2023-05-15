@@ -35,10 +35,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       validate: {min:0, max:5},
     },
-    // genres: {
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
-    //   allowNull: false,
-    // },
+    genres: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
     created: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,

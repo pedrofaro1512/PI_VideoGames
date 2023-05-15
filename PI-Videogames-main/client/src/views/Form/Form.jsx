@@ -89,8 +89,10 @@ const Form = () => {
     event.preventDefault();
 
     const platformsArray = form.platforms.split(",").map((platform) => platform.trim());
+    
+    const genresArray = form.genres.split(",").map((genre) => genre.trim());
 
-    const data = { ...form, platforms: platformsArray};
+    const data = { ...form, platforms: platformsArray, genres: genresArray};
 
     axios.post("http://localhost:3001/videogames",data)
     .then(res=>alert("Video juego creado con exito"))

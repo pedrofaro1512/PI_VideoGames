@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux';
 
 const CardsContainer = () => {
 
-    const videogames = useSelector(state=>state.videogames)
+  const videogames = useSelector(state=>state.videogames)
     
   return (
     <div className={style.container}>
         {videogames.map(game => {
-            return <Card 
+            return <Card
+                key={game.id}
                 id={game.id}
                 name={game.name}
                 platforms={game.platforms}

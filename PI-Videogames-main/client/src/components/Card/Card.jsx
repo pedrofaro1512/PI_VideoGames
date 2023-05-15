@@ -8,7 +8,8 @@ const Card = (props) => {
         <Link to={`/detail/${props.id}`}>
             <h1>Name: {props.name}</h1>
         </Link>
-            <p>Image: {props.image}</p>
+            <img src={props.image} alt={props.name}/>
+            {/* <p>Image: {props.image}</p> */}
             {/* <p>Platforms: {props.platforms.join(', ')}</p> */}
             {/* <p>Released: {props.released}</p>
             <p>Rating: {props.rating}</p> */}

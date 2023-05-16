@@ -1,5 +1,6 @@
 const { Videogame, Genre } = require('../db');
 const axios = require('axios');
+const { Op } = require('sequelize');
 const { API_KEY } = process.env;
 
 // Filtrado de la información de los videogames
@@ -22,7 +23,13 @@ const cleanVideogame = (arr) => {
 
 // Controller para videogames de la BD o la API por name o no
 const searchVideogameByName = async (name) => {
-    const dbVideogames = await Videogame.findAll({ where: { name:name }});
+    const dbVideogames = await Videogame.findAll({
+        where: { 
+            name: {
+                [Op.iLike]: `%${name}%`
+            }
+        }
+    });
 
     const apiVideogames = (await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data.results;
     
@@ -38,7 +45,7 @@ const getAllVideogames = async () => {
     const dbVideogames = await Videogame.findAll();
 
     let apiurls = [];
-        for(let i = 1; i <= 1; i++) {
+        for(let i = 1; i <= 2; i++) {
             apiurls = [...apiurls, `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`]
         };
         let apiVideogames = apiurls.map((url)=> axios.get(url));

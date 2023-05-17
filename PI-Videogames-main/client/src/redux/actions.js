@@ -3,8 +3,8 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_VIDEOGAME_DETAIL = "GET_VIDEOGAME_DETAIL";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_BY_NAME = "GET_BY_NAME";
-export const GENRES = "GENRES";
-export const FILTER = "FILTERS";
+export const GET_GENRES = "GET_GENRES";
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const ORDER = "ORDER";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
@@ -35,12 +35,20 @@ export const getByName = (name) => {
     }
 };
 
-export const cleanDetail = () => {
-    return { type: CLEAN_DETAIL };
+export const getGenres = () => {
+    return async function (dispatch) {
+        const apiData = await axios.get("http://localhost:3001/genres");
+        const genres = apiData.data;
+        dispatch({ type: GET_GENRES, payload: genres })
+    }
 };
 
-export const filterGenres = (genres) => {
-    return { type: FILTER, payload: genres }
+export const filterByGenre = (genre) => {
+    return { type: FILTER_BY_GENRE, payload: genre }
+};
+
+export const cleanDetail = () => {
+    return { type: CLEAN_DETAIL };
 };
 
 export const orderGames = (order) => {

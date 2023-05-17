@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { getGenres } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Form = () => {
+  const dispatch = useDispatch();
+  const genres = useSelector(state => state.genres);
+
+  useEffect(() => {
+    dispatch(getGenres())
+  },[dispatch])
 
   const [form, setForm] = useState({
     name:"",
@@ -10,7 +18,7 @@ const Form = () => {
     platforms:"",
     released:"",
     rating:"",
-    genres:""
+    genres:[],
   });
 
   const [errors, setErrors] = useState({
@@ -82,7 +90,17 @@ const Form = () => {
     const value = event.target.value
 
     setForm({ ...form, [property]:value})
-    validate({ ...form, [property]:value},property)
+    validate({ ...form, [property]:value}, property)
+  };
+
+  const handleSelectGenre = (event) => {
+    if(event.target.value !== "genres" && !form.genres.includes(event.target.value)) {
+      setForm({
+        ...form,
+        genres: [ ...form.genres, event.target.value]
+      })
+      validate({ ...form, [event.target.name]:event.target.value}, event.target.name)
+    }
   };
 
   const submitHandler = (event) => {
@@ -90,9 +108,9 @@ const Form = () => {
 
     const platformsArray = form.platforms.split(",").map((platform) => platform.trim());
     
-    const genresArray = form.genres.split(",").map((genre) => genre.trim());
+    //const genresArray = form.genres.split(",").map((genre) => genre.trim());
 
-    const data = { ...form, platforms: platformsArray, genres: genresArray};
+    const data = { ...form, platforms: platformsArray};
 
     axios.post("http://localhost:3001/videogames",data)
     .then(res=>alert("Video juego creado con exito"))
@@ -157,7 +175,16 @@ const Form = () => {
           onChange={changeHandle}/>
           {errors.rating && <span>{errors.rating}</span>}
         </div>
+
         <div>
+          <select name="genres" onChange={handleSelectGenre}>
+            <option value="genres">Genres: </option>
+            {genres?.map((genre, i) => {return(<option key={i}>{genre.name}</option>)})}
+          </select>
+          {errors.genres && <span>{errors.genres}</span>}
+        </div>
+
+        {/* <div>
           <label>Genres: </label>
           <input 
           type="text"
@@ -165,7 +192,7 @@ const Form = () => {
           name="genres"
           onChange={changeHandle}/>
           {errors.genres && <span>{errors.genres}</span>}
-        </div>
+        </div> */}
         <button disabled={disable()} type="submit">SUBMIT</button>
       </form>
     </div>

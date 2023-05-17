@@ -4,7 +4,8 @@ import {
     GET_VIDEOGAME_DETAIL,
     GET_BY_NAME,
     CLEAN_DETAIL,
-    FILTER,
+    GET_GENRES,
+    FILTER_BY_GENRE,
     ORDER,
     FILTER_BY_SOURCE,
     FILTER_BY_RATING,
@@ -16,6 +17,7 @@ const initialState = {
     videogames: [],
     videogameDetail: {},
     videogamesCopy: [],
+    genres: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -23,7 +25,6 @@ const rootReducer = (state = initialState, action) => {
         case GET_VIDEOGAMES:
             return {
                 ...state,
-                // OJO con estas dos lineas de abajo. min 13 de hooks
                 videogames: action.payload,
                 videogamesCopy: action.payload };
 
@@ -34,18 +35,24 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, videogames: action.payload };
 
         case CLEAN_DETAIL:
-            return { ...state, videogameDetail: {},};
+            return { ...state, videogameDetail: {}, };
 
-        case FILTER:
-            const videogamesCopyFiltered = state.videogamesCopy.filter(videogame => videogame.genres.includes(action.payload));
+        case GET_GENRES:
+            return {
+                ...state,
+                genres: action.payload };
+        
+        case FILTER_BY_GENRE:
+            const videogamesCopyGenres = state.videogamesCopy.filter(videogame => videogame.genres.includes(action.payload));
+            console.log(action.payload)
             return {
                 ...state,
                 videogames: 
                 action.payload === 'AllVideogames'
                 ? [...state.videogamesCopy]
-                : videogamesCopyFiltered
+                : videogamesCopyGenres
             }
-
+            
         case ORDER:
             const videogamesCopyOrdered = [ ...state.videogamesCopy ]
             return {

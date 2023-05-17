@@ -1,15 +1,16 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  filterGenres,
   orderGames,
   filterBySource,
   filterByRating,
+  filterByGenre,
   reset
 } from "../../redux/actions";
 
 const Filters = () => {
 
     const dispatch = useDispatch();
+    const genres = useSelector(state => state.genres)
 
     const handlerOrder = (event) => {
       const value = event.target.value;
@@ -20,10 +21,10 @@ const Filters = () => {
       }
     };
 
-    const handlerFilter = (event) => {
+    const handlerGenres = (event) => {
       const value = event.target.value;
       if (value !== '0') {
-        dispatch(filterGenres(value))
+          dispatch(filterByGenre(value))
       }
     };
 
@@ -47,38 +48,22 @@ const Filters = () => {
     <div>
 
       <label htmlFor="">Ordenar por: </label>
-        <select onChange={handlerOrder}>
+        <select  onChange={handlerOrder}>
             <option defaultChecked value="0">Reset</option>
             <option value="A">A - Z</option>
             <option value="D">Z - A</option>
         </select>
 
       <label htmlFor="">Genero: </label>
-        <select onChange={handlerFilter}>
+        <select onChange={handlerGenres}>
           <option defaultChecked value="0">-</option>
           <option value="AllVideogames">All Videogames</option>
-          <option value="Action">Action</option>
-          <option value="Indie">Indie</option>
-          <option value="Adventure">Adventure</option>
-          <option value="RPG">RPG</option>
-          <option value="Strategy">Strategy</option>
-          <option value="Shooter">Shooter</option>
-          <option value="Casual">Casual</option>
-          <option value="Simulation">Simulation</option>
-          <option value="Puzzle">Puzzle</option>
-          <option value="Arcade">Arcade</option>
-          <option value="Platformer">Platformer</option>
-          <option value="Massively Multiplayer">Massively Multiplayer</option>
-          <option value="Racing">Racing</option>
-          <option value="Sports">Sports</option>
-          <option value="Fighting">Fighting</option>
-          <option value="Family">Family</option>
-          <option value="Educational">Educational</option>
-          <option value="Board Games">Board Games</option>
-          <option value="Card">Card</option>
-        </select>
+          {genres.map(genre => (
+            <option key={genre.id} value={genre.name}>{genre.name}</option>
+          ))}
+      </select>
 
-        <label htmlFor="">Source: </label>
+      <label htmlFor="">Source: </label>
         <select onChange={handlerFilterSource}>
             <option defaultChecked value="0">-</option>
             <option value="AllSource">All Videogames</option>
@@ -98,3 +83,5 @@ const Filters = () => {
 }
 
 export default Filters;
+
+

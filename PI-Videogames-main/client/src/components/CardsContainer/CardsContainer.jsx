@@ -2,11 +2,11 @@ import React from 'react';
 import Card from '../Card/Card';
 import style from "./CardsContainer.module.css";
 
-const CardsContainer = ({ videogames }) => {
+const CardsContainer = ({ videoGames }) => {
     
   return (
     <div className={style.container}>
-        {videogames?.map(game => {
+        {videoGames?.map(game => {
             return <Card
                 key={game.id}
                 id={game.id}

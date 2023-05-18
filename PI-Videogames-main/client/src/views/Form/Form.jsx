@@ -11,6 +11,7 @@ const Form = () => {
     dispatch(getGenres())
   },[dispatch])
 
+  // Estados locales
   const [form, setForm] = useState({
     name:"",
     image:"",
@@ -31,6 +32,7 @@ const Form = () => {
     genres:" * Required genres"
   });
 
+  // Disable boton submit
   const disable = () => {
     let disabled = true;
     for (let error in errors) {
@@ -43,6 +45,7 @@ const Form = () => {
     return disabled;
   }
 
+  // Validaciones
   const validate = (input, name) => {
     if (name==="name") {
       if(input.name !== "") setErrors({ ...errors, name:""})
@@ -108,8 +111,6 @@ const Form = () => {
 
     const platformsArray = form.platforms.split(",").map((platform) => platform.trim());
     
-    //const genresArray = form.genres.split(",").map((genre) => genre.trim());
-
     const data = { ...form, platforms: platformsArray};
 
     axios.post("http://localhost:3001/videogames",data)
@@ -117,6 +118,7 @@ const Form = () => {
     .catch(err=>alert(err))
   };
 
+  // Formulario
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -184,15 +186,6 @@ const Form = () => {
           {errors.genres && <span>{errors.genres}</span>}
         </div>
 
-        {/* <div>
-          <label>Genres: </label>
-          <input 
-          type="text"
-          value={form.genres}
-          name="genres"
-          onChange={changeHandle}/>
-          {errors.genres && <span>{errors.genres}</span>}
-        </div> */}
         <button disabled={disable()} type="submit">SUBMIT</button>
       </form>
     </div>

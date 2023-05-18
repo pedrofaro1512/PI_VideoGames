@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
 
+//Barra de navegación
 const Navbar = () => {
   return (
     <div className={style.mainContainer}>
@@ -14,6 +15,7 @@ const Navbar = () => {
   )
 };
 
+// Barra de busqueda
 const SearchBar = ({changeHandler, submitHandler}) => {
   return (
       <div className={style.buscarNombre}>

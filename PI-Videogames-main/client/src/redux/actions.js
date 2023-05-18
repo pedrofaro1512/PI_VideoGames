@@ -10,7 +10,7 @@ export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
 export const RESET = "RESET";
 
-
+// Actions para pedir info
 export const getVideogames = () => {
     return async function (dispatch) {
         const apiData = await axios.get("http://localhost:3001/videogames");
@@ -43,6 +43,7 @@ export const getGenres = () => {
     }
 };
 
+// Actions para filtrar
 export const filterByGenre = (genre) => {
     return { type: FILTER_BY_GENRE, payload: genre }
 };

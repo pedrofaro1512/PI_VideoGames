@@ -10,10 +10,16 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const videogames = useSelector(state=>state.videogames);
-
   const [ searchString, setSearchString ] = useState("");
+  const [ noResults, setNoResults ] = useState(false);
+  
+  // Paginación
   const [ currentPage, setCurrentPage ] = useState(1);
   const itemsPerPage = 15;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const videoGamesToShow = videogames.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(videogames.length / itemsPerPage);
 
   const handleChangePage = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -32,10 +38,12 @@ const Home = () => {
     }
   };
 
+  // Handler de busqueda
   const changeHandler = (event) => {
     setSearchString(event.target.value);
   };
 
+  // Submit
   const submitHandler = (event) => {
     event.preventDefault()
     dispatch(getByName(searchString))
@@ -49,18 +57,20 @@ const Home = () => {
     dispatch(getGenres())
   },[dispatch])
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const videoGamesToShow = videogames.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(videogames.length / itemsPerPage);
+  useEffect(() => {
+    setNoResults(videogames.length === 0)
+    if (videogames.length === 0) {
+      alert('No se encontraron coincidencias.')
+    }
+  },[videogames]);
 
   return (
     <div>
       <Filters/>
-      <br></br>
-      <Navbar.SearchBar changeHandler={changeHandler} submitHandler={submitHandler} />
-      <CardsContainer videoGames={videoGamesToShow} />
+      <br />
 
+      <Navbar.SearchBar changeHandler={changeHandler} submitHandler={submitHandler} />
+      
       <button onClick={goToPreviousPage}>Página anterior</button>
       <Pagination
         totalPages={totalPages}
@@ -68,7 +78,9 @@ const Home = () => {
         setCurrentPage={handleChangePage}
       />
       <button onClick={goToNextPage}>Página siguiente</button>
-      
+      <br />
+
+      <CardsContainer videoGames={videoGamesToShow} />
     </div>
   )
 }

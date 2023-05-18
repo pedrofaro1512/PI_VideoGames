@@ -112,27 +112,3 @@ module.exports = {
     getVideogameById,
     deleteVideogame
 };
-
-
-
-// "results": [
-//     {
-//         "platforms": [
-//         {
-//           "platform": {
-//             "name": "PlayStation 5",
-//           },
-//         },
-//         {
-//           "platform": {
-//             "name": "Xbox Series S/X",
-//           },
-//         },
-//         {
-//           "platform": {
-//             "name": "PlayStation 4",
-//           },
-//         },
-//         ]
-//     }
-// ]

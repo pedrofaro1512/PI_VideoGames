@@ -1,4 +1,4 @@
-// El reducer es una función que recibe el estado que va a modificar y la action que le indica que va a hacer
+// Importación de types
 import {
     GET_VIDEOGAMES,
     GET_VIDEOGAME_DETAIL,
@@ -12,7 +12,7 @@ import {
     RESET,
     } from "./actions";
 
-// Se le debe dar un estado inicial que sera un array vacio
+// Estados iniciales 
 const initialState = {
     videogames: [],
     videogameDetail: {},
@@ -22,6 +22,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case GET_VIDEOGAMES:
             return {
                 ...state,
@@ -39,8 +40,7 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_GENRES:
             return {
-                ...state,
-                genres: action.payload };
+                ...state, genres: action.payload };
         
         case FILTER_BY_GENRE:
             const videogamesCopyGenres = state.videogamesCopy.filter(videogame => videogame.genres.includes(action.payload));

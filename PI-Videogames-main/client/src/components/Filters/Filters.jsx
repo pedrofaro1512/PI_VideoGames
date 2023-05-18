@@ -26,6 +26,7 @@ const Filters = () => {
       if (value !== '0') {
           dispatch(filterByGenre(value))
       }
+      
     };
 
     const handlerFilterSource = (event) => {

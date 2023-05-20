@@ -1,13 +1,54 @@
+/* Estilos NavBar */
 .mainContainer {
+    background: linear-gradient(to right, white 20%, black);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border-radius: 15px;
-    border: 1px solid black;
+    border: none;
     height: 4rem;
     align-items: center;
 }
 .mainContainer img{
     width: 3rem;
     margin-top: 1px;
+}
+
+.navLink {
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+/* Estilos SearchBar */
+.buscarNombre {
+    margin-top: 10px;
+}
+  
+.buscarNombre form {
+    display: flex;
+    align-items: center;
+}
+  
+.buscarNombre input[type="search"] {
+    width: 200px;
+    padding: 5px;
+    border: 0px;
+    border-radius: 15px 0px 0px 15px;
+    background-color: #e0e0e0;;
+    height: 2em;
+}
+  
+.buscarNombre button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0px 15px 15px 0px;
+    background-color: #aaaaaa70;
+    color: white;
+    height: 2em;
+}
+  
+.buscarNombre button:hover {
+    box-shadow: 0 0 10px 2px rgb(1, 247, 255);
+    color: rgb(1, 247, 255);
 }

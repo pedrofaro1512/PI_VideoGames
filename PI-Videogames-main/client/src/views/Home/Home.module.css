@@ -1,0 +1,28 @@
+.containerHome {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+    padding: 1em;
+    border-radius: 5px;
+    color: white
+}
+
+.containerHome div {
+    margin-bottom: 15px;
+}
+
+.paginado {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.paginado button {
+    color: black;
+    font-weight: bolder;
+    width: 100px;
+}
+.paginado button:hover {
+    box-shadow: 0 0 10px 2px rgb(1, 247, 255);
+}

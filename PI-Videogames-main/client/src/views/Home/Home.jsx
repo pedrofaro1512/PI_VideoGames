@@ -5,6 +5,7 @@ import { getByName, getVideogames, getGenres } from '../../redux/actions';
 import Navbar from '../../components/Navbar/Navbar';
 import Filters from '../../components/Filters/Filters';
 import Pagination from '../../components/Pagination/Pagination';
+import style from './Home.module.css';
 
 const Home = () => {
 
@@ -58,29 +59,36 @@ const Home = () => {
   },[dispatch])
 
   useEffect(() => {
-    setNoResults(videogames.length === 0)
-    if (videogames.length === 0) {
+    setNoResults(false);
+    if (videogames.length === 0 && searchString.trim() !=="") {
+      setNoResults(true)
       alert('No se encontraron coincidencias.')
     }
-  },[videogames]);
+  },[videogames, searchString]);
 
   return (
-    <div>
-      <Filters/>
-      <br />
+    <div className={style.containerHome}>
+      <div>
+        <Filters/>
+      </div>
 
-      <Navbar.SearchBar changeHandler={changeHandler} submitHandler={submitHandler} />
-      
-      <button onClick={goToPreviousPage}>Página anterior</button>
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        setCurrentPage={handleChangePage}
-      />
-      <button onClick={goToNextPage}>Página siguiente</button>
-      <br />
+      <div>
+        <Navbar.SearchBar changeHandler={changeHandler} submitHandler={submitHandler} />
+      </div>
+      <div className={style.paginado}>
+        <button onClick={goToPreviousPage}>&lt;&lt; Previous</button>
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={handleChangePage}
+        />
+        <button onClick={goToNextPage}>Next &gt;&gt;</button>
+      </div>
 
+      <div>
       <CardsContainer videoGames={videoGamesToShow} />
+        
+      </div>
     </div>
   )
 }

@@ -1,0 +1,14 @@
+.containerFilters {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .containerFilters label {
+    margin-inline-end: auto;
+    font-size: 18px;
+  }
+  
+  .containerFilters select {
+    margin-inline-end: 150px ;
+  }

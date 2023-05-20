@@ -23,25 +23,48 @@ const Detail = () => {
       {videogame.name ? (
         <>
           <div className={style.containerDetail}>
-            <h1>Name:</h1>
-            <h2>{videogame.name}</h2>
-            <h1>ID:</h1>
-            <h2>{videogame.id}</h2>
-            <img src={videogame.image} alt={videogame.name} />
-            <h1>Platforms:</h1>
-            <h2>{videogame.platforms.join(', ')}</h2>
-            <h1>Description:</h1>
-            <h2 dangerouslySetInnerHTML={{ __html: videogame.description }} />
-            <h1>Released:</h1>
-            <h2>{videogame.released}</h2>
-            <h1>Rating:</h1>
-            <h2>{videogame.rating}</h2>
-            <h1>Genres:</h1>
-            <h2>{videogame.genres.join(', ')}</h2>
+
+            <div className={style.nameId}>
+              <div>
+                <h1>Name: {videogame.name}</h1>
+              </div>
+              <div>
+                <h1>ID: {videogame.id}</h1>
+              </div>
+            </div>
+            <hr></hr>
+              <div className={style.img}>
+                <img src={videogame.image} alt={videogame.name} />
+              </div>
+            <hr></hr>
+            <div>
+              <div>
+                <h1>Platforms: {videogame.platforms.join(', ')}</h1>
+                <h1>Genres: {videogame.genres.join(', ')}</h1>
+              </div>
+            </div>
+            <hr></hr>
+            <div className={style.description}>
+              <h1>Description:</h1>
+              <h2 dangerouslySetInnerHTML={{ __html: videogame.description }} />
+            </div>
+            <hr></hr>           
+            <div>
+              <div className={style.rr}>
+                <h1>Released: {videogame.released}</h1>
+                <h1>Rating: {videogame.rating}</h1>
+              </div>
+            </div>
+            
           </div>
         </>
       ) : (
-        <p>Loading...</p>
+        <div className={style.dots}>
+          <h1>Loading     </h1>
+          <div className={style.dot}></div>
+          <div className={style.dot}></div>
+          <div className={style.dot}></div>
+        </div>
       )}
     </div>
   )

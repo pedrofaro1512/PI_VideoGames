@@ -7,9 +7,9 @@ const Navbar = () => {
   return (
     <div className={style.mainContainer}>
        
-        <Link to="/"> <img src="https://falabella.scene7.com/is/image/FalabellaCO/2970013_1?wid=800&hei=800&qlt=70" alt="control" /></Link>
-        <Link to="/home">HOME</Link>
-        <Link to="/create">FORM</Link>
+        <Link to="/"> <img src="https://panamericana.vtexassets.com/arquivos/ids/324597-800-auto?v=636946521362500000&width=800&height=auto&aspect=true" alt="control" /></Link>
+        <Link to="/home" className={style.navLink}>HOME</Link>
+        <Link to="/create" className={style.navLink}>FORM</Link>
       
     </div>
   )
@@ -20,7 +20,7 @@ const SearchBar = ({changeHandler, submitHandler}) => {
   return (
       <div className={style.buscarNombre}>
           <form onChange={changeHandler}>
-              <input type="search" placeholder="Busqueda en catálogo" />
+              <input type="search" placeholder="Search in catalog" />
               <button type='submit' onClick={submitHandler}>Buscar</button>
           </form>
       </div>

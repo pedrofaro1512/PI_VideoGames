@@ -45,7 +45,7 @@ const getAllVideogames = async () => {
     const dbVideogames = await Videogame.findAll();
 
     let apiurls = [];
-        for(let i = 1; i <= 2; i++) {
+        for(let i = 1; i <= 5; i++) {
             apiurls = [...apiurls, `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`]
         };
         let apiVideogames = apiurls.map((url)=> axios.get(url));

@@ -197,7 +197,8 @@ const Form = () => {
 
         <div>
             <label>Image: </label>
-            <input 
+            <input
+            placeholder="URL"
             type="text"
             value={form.image}
             name="image"
@@ -215,15 +216,6 @@ const Form = () => {
           {errors.description && <span>{errors.description}</span>}
         </div>
 
-        {/* <div>
-          <label>Platforms: </label>
-          <input 
-          type="text"
-          value={form.platforms}
-          name="platforms"
-          onChange={changeHandle}/>
-          {errors.platforms && <span>{errors.platforms}</span>}
-        </div> */}
         <div>
           <label>Platforms: </label>
           <select name="Platforms" onChange={handleSelectPlatform}>
@@ -242,6 +234,7 @@ const Form = () => {
           onChange={changeHandle}/>
           {errors.released && <span>{errors.released}</span>}
         </div>
+
         <div>
           <label>Rating: </label>
           <input 

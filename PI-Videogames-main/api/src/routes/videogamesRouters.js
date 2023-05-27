@@ -4,6 +4,7 @@ const {
     getVideogameIdHandler,
     postVideogameHandler,
     deleteVideogameHandler,
+    //putVideogamesHandler,
 } = require('../handlers/videogamesHandlers')
 
 const videogamesRouter = Router();
@@ -26,5 +27,6 @@ videogamesRouter.get('/', getVideogameHandler);
 videogamesRouter.post('/', validateVideogame, postVideogameHandler);
 videogamesRouter.get('/:id', getVideogameIdHandler);
 videogamesRouter.delete('/:id', deleteVideogameHandler);
+// videogamesRouter.put('/:id', putVideogamesHandler);
 
 module.exports = videogamesRouter;

@@ -105,10 +105,30 @@ const deleteVideogame = async (id) => {
     await Videogame.destroy({ where: { id }});
 };
 
+// const updateVideogame = async (id, info) => {
+//     const games = getAllVideogames();
+
+//     const videogame = games.find((game) => game.id === id);
+//     const { name, image, description, platforms, released, rating, genres } = info;
+//     if (![name, image, description, platforms, released, rating, genres].every(Boolean))
+//         throw Error("Faltan datos");
+    
+//     videogame.name = name;
+//     videogame.image = image;
+//     videogame.description = description;
+//     videogame.platforms = platforms;
+//     videogame.released = released;
+//     videogame.rating = rating;
+//     videogame.genres = genres;
+
+//     return videogame;
+// };
+
 module.exports = {
     getAllVideogames,
     searchVideogameByName,
     createVideogame,
     getVideogameById,
-    deleteVideogame
+    deleteVideogame,
+    // updateVideogame
 };

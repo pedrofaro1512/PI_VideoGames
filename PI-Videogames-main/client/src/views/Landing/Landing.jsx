@@ -15,7 +15,7 @@ const Landing = () => {
 
     <div>
       <p>
-      Bienvenido a MASTER GAMES, la plataforma en línea que te permite disfrutar de una amplia variedad de videojuegos y crear tus propios juegos personalizados. Nuestro sitio web presenta información detallada sobre los juegos, incluyendo el nombre del juego, una imagen, una descripción y el género, lo que te ayuda a encontrar fácilmente los juegos que se adapten a tus gustos y preferencias.
+      Bienvenido a MASTER GAMES, la plataforma en línea que te permite disfrutar de una amplia variedad de videojuegos y crear tus propios juegos personalizados. Nuestro sitio web presenta información detallada sobre los juegos, incluyendo el nombre, una imagen, una descripción y el género, lo que te ayuda a encontrar fácilmente los juegos que se adapten a tus gustos y preferencias.
       </p>
 
       <p>

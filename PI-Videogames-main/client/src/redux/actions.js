@@ -4,6 +4,7 @@ export const GET_VIDEOGAME_DETAIL = "GET_VIDEOGAME_DETAIL";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_BY_NAME = "GET_BY_NAME";
 export const GET_GENRES = "GET_GENRES";
+export const GET_PLATFORMS = "GET_PLATFORMS";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const ORDER = "ORDER";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
@@ -40,6 +41,14 @@ export const getGenres = () => {
         const apiData = await axios.get("http://localhost:3001/genres");
         const genres = apiData.data;
         dispatch({ type: GET_GENRES, payload: genres })
+    }
+};
+
+export const getPlatforms = () => {
+    return async function (dispatch) {
+        const apiData = await axios.get("http://localhost:3001/platforms");
+        const platforms = apiData.data;
+        dispatch({ type: GET_PLATFORMS, payload: platforms })
     }
 };
 

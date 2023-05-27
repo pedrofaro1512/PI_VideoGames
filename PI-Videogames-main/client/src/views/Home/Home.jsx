@@ -62,7 +62,7 @@ const Home = () => {
     setNoResults(false);
     if (videogames.length === 0 && searchString.trim() !=="") {
       setNoResults(true)
-      alert('No se encontraron coincidencias.')
+      alert('Could not find the game.')
     }
   },[videogames, searchString]);
 

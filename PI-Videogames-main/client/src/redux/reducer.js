@@ -5,6 +5,7 @@ import {
     GET_BY_NAME,
     CLEAN_DETAIL,
     GET_GENRES,
+    GET_PLATFORMS,
     FILTER_BY_GENRE,
     ORDER,
     FILTER_BY_SOURCE,
@@ -18,6 +19,7 @@ const initialState = {
     videogameDetail: {},
     videogamesCopy: [],
     genres: [],
+    platforms: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -41,6 +43,10 @@ const rootReducer = (state = initialState, action) => {
         case GET_GENRES:
             return {
                 ...state, genres: action.payload };
+        
+        case GET_PLATFORMS:
+            return {
+                ...state, platforms: action.payload };
         
         case FILTER_BY_GENRE:
             const videogamesCopyGenres = state.videogamesCopy.filter(videogame => videogame.genres.includes(action.payload));

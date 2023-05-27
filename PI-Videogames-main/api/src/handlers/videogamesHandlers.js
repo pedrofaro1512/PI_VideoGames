@@ -3,7 +3,8 @@ const {
     searchVideogameByName,
     createVideogame,
     getVideogameById,
-    deleteVideogame 
+    deleteVideogame,
+    //updateVideogame
 } = require('../controllers/videogamesControllers');
 
 // Handler para traer todos los videogames si no se le pasa nada o trae el videogame que se le paso name por query
@@ -52,9 +53,22 @@ const deleteVideogameHandler = async (req, res) => {
     }
 };
 
+// Handler para modificar un video juego
+// const putVideogamesHandler = async (req, res) => {
+//     const { id } = req.params;
+//     const { name, image, description, platforms, released, rating, genres } = req.body;
+//     try {
+//         const updatedVideogame = updateVideogame(id, { name, image, description, platforms, released, rating, genres });
+//         res.status(200).send("Juego actualizado");
+//     } catch (error) {
+//         res.status(400).json({ error: error.message });
+//     }
+// };
+
 module.exports = {
     getVideogameHandler,
     getVideogameIdHandler,
     postVideogameHandler,
-    deleteVideogameHandler
+    deleteVideogameHandler,
+    //putVideogamesHandler
 };

@@ -26,22 +26,23 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    released: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     rating: {
       type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {min:0, max:5},
     },
-    genres: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+    released: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     created: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
+    },
+    
+    genres: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
     },
   },{
     timestamps: false,

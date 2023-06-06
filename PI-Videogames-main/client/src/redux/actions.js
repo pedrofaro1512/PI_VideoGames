@@ -14,7 +14,7 @@ export const RESET = "RESET";
 // Actions para pedir info
 export const getVideogames = () => {
     return async function (dispatch) {
-        const apiData = await axios.get("http://localhost:3001/videogames");
+        const apiData = await axios.get("/videogames");
         const videogames = apiData.data;
         dispatch({ type: GET_VIDEOGAMES, payload: videogames });
     };
@@ -22,7 +22,7 @@ export const getVideogames = () => {
 
 export const getVideogameDetail = (id) => {
     return async function (dispatch) {
-        const apiData = await axios.get(`http://localhost:3001/videogames/${id}`);
+        const apiData = await axios.get(`/videogames/${id}`);
         const videogame = apiData.data;
         dispatch({ type: GET_VIDEOGAME_DETAIL, payload: videogame });
     };
@@ -30,7 +30,7 @@ export const getVideogameDetail = (id) => {
 
 export const getByName = (name) => {
     return async function (dispatch) {
-        const apiData = await axios.get(`http://localhost:3001/videogames?name=${name}`);
+        const apiData = await axios.get(`/videogames?name=${name}`);
         const videogameName = apiData.data;
         dispatch({ type: GET_BY_NAME, payload: videogameName })
     }
@@ -38,7 +38,7 @@ export const getByName = (name) => {
 
 export const getGenres = () => {
     return async function (dispatch) {
-        const apiData = await axios.get("http://localhost:3001/genres");
+        const apiData = await axios.get("/genres");
         const genres = apiData.data;
         dispatch({ type: GET_GENRES, payload: genres })
     }
@@ -46,7 +46,7 @@ export const getGenres = () => {
 
 export const getPlatforms = () => {
     return async function (dispatch) {
-        const apiData = await axios.get("http://localhost:3001/platforms");
+        const apiData = await axios.get("/platforms");
         const platforms = apiData.data;
         dispatch({ type: GET_PLATFORMS, payload: platforms })
     }

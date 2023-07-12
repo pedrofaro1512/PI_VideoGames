@@ -49,15 +49,15 @@ const Filters = () => {
   return (
     <div className={style.containerFilters}>
 
-      <label htmlFor="">Sort by: </label>
-        <select  onChange={handlerOrder}>
+      <label htmlFor="sort">Sort by: </label>
+        <select id="sort" onChange={handlerOrder}>
             <option defaultChecked value="0">Reset</option>
             <option value="A">A - Z</option>
             <option value="D">Z - A</option>
         </select>
 
-      <label htmlFor="">Genre: </label>
-        <select onChange={handlerGenres}>
+      <label htmlFor="genre">Genre: </label>
+        <select id="genre" onChange={handlerGenres}>
           <option defaultChecked value="0">-</option>
           <option value="AllVideogames">All Videogames</option>
           {genres.map(genre => (
@@ -65,16 +65,16 @@ const Filters = () => {
           ))}
       </select>
 
-      <label htmlFor="">Source: </label>
-        <select onChange={handlerFilterSource}>
+      <label htmlFor="source">Source: </label>
+        <select id="source" onChange={handlerFilterSource}>
             <option defaultChecked value="0">-</option>
             <option value="AllSource">All Videogames</option>
             <option value="false">API</option>
             <option value="true">Database</option>
         </select>
 
-        <label htmlFor="">Rating: </label>
-        <select onChange={handlerFilterRating}>
+        <label htmlFor="rating">Rating: </label>
+        <select id="rating" onChange={handlerFilterRating}>
             <option defaultChecked value="0">Reset</option>
             <option value="A">Ascending</option>
             <option value="D">Descending</option>

@@ -20,7 +20,7 @@ const SearchBar = ({changeHandler, submitHandler}) => {
   return (
       <div className={style.buscarNombre}>
           <form onChange={changeHandler}>
-              <input type="search" placeholder="Search in catalog" />
+              <input id="search" type="search" placeholder="Search in catalog" />
               <button type='submit' onClick={submitHandler}>Buscar</button>
           </form>
       </div>

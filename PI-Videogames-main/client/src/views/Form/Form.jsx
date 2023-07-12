@@ -184,11 +184,11 @@ const Form = () => {
   <div>
     <div className={style.containerForm}>
       <form onSubmit={submitHandler} className={style.form}>
-        {console.log(form)}
         <div>
-          <label>Name: </label>
+          <label htmlFor="name">Name: </label>
           <input 
           type="text"
+          id="name"
           value={form.name}
           name="name"
           onChange={changeHandle}/>
@@ -196,9 +196,10 @@ const Form = () => {
         </div>
 
         <div>
-            <label>Image: </label>
+            <label htmlFor="image">Image: </label>
             <input
             placeholder="URL"
+            id="image"
             type="text"
             value={form.image}
             name="image"
@@ -207,9 +208,10 @@ const Form = () => {
         </div>
 
         <div>
-          <label>Description: </label>
+          <label htmlFor="description">Description: </label>
           <input 
           type="text"
+          id="description"
           value={form.description}
           name="description"
           onChange={changeHandle}/>
@@ -226,9 +228,10 @@ const Form = () => {
         </div>
 
         <div>
-          <label>Released: </label>
+          <label htmlFor="released">Released: </label>
           <input 
           type="text"
+          id="released"
           value={form.released}
           name="released"
           onChange={changeHandle}/>
@@ -236,9 +239,10 @@ const Form = () => {
         </div>
 
         <div>
-          <label>Rating: </label>
+          <label htmlFor="rating">Rating: </label>
           <input 
           type="text"
+          id="raiting"
           value={form.rating}
           name="rating"
           onChange={changeHandle}/>
